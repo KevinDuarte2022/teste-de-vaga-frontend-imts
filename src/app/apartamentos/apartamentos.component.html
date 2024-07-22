@@ -1,2 +1,49 @@
 <h2>Apartamentos</h2>
 <p>Bem-vindo à página de apartamentos!</p>
+
+<form [formGroup]="apartamentoForm" (ngSubmit)="onSubmit()">
+    <label hi>ID:</label>
+    <input formControlName="id" hidden/>
+
+    <label>Bloco:</label>
+    <input formControlName="bloco" />
+
+    <label>Apartamento:</label>
+    <input formControlName="apartamento" />
+
+    <label>Morador:</label>
+    <input formControlName="morador" />
+
+    <label>Telefone:</label>
+    <input formControlName="telefone" />
+
+    <label>Email:</label>
+    <input formControlName="email" />
+
+    <button type="submit">Adicionar Apartamento</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let apartamento of apartamentoList">
+            <td>{{ apartamento.id }}</td>
+            <td>{{ apartamento.bloco }}</td>
+            <td>{{ apartamento.apartamento }}</td>
+            <td>{{ apartamento.morador }}</td>
+            <td>{{ apartamento.telefone }}</td>
+            <td>{{ apartamento.email }}</td>
+            <td>
+                <button (click)="editar(apartamento)">Editar</button>
+                <button (click)="excluir(apartamento)">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

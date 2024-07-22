@@ -1,2 +1,52 @@
 <h2>Veículos</h2>
 <p>Bem-vindo à página de veículos!</p>
+
+<form [formGroup]="veiculoForm" (ngSubmit)="onSubmit()">
+    <label hi>ID:</label>
+    <input formControlName="id" hidden/>
+
+    <label>Marca:</label>
+    <input formControlName="marca" />
+
+    <label>Modelo:</label>
+    <input formControlName="modelo" />
+
+    <label>Cor:</label>
+    <input formControlName="cor" />
+
+    <label>Placa:</label>
+    <input formControlName="placa" />
+
+    <label>Apartamento:</label>
+    <select formControlName="id_apartamento">
+        <option *ngFor="let apartamento of apartamentoList" [value]="apartamento.id">
+            {{ apartamento.apartamento }} - {{ apartamento.bloco }}
+        </option>
+    </select>
+
+    <button type="submit">Adicionar Veículo</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Veiculo</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let veiculo of veiculoList">
+            <td>{{ veiculo.id }}</td>
+            <td>{{ veiculo.marca }}</td>
+            <td>{{ veiculo.modelo }}</td>
+            <td>{{ veiculo.cor }}</td>
+            <td>{{ veiculo.placa }}</td>
+            <td>
+                <button (click)="editar(veiculo)">Editar</button>
+                <button (click)="excluir(veiculo)">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
